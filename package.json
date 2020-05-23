@@ -1,11 +1,11 @@
 {
-  "name": "cli",
+  "name": "standard-structure",
   "version": "0.0.1",
-  "description": "cli CLI",
+  "description": "The Standard-Structure library + CLI",
   "private": true,
   "types": "build/types/types.d.ts",
   "bin": {
-    "cli": "bin/cli"
+    "struct": "bin/cli"
   },
   "scripts": {
     "format": "prettier --write **/*.{js,ts,tsx,json}",
