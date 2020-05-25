@@ -31,11 +31,11 @@
   ],
   "license": "MIT",
   "dependencies": {
+    "@types/node": "^14.0.5",
     "gluegun": "latest"
   },
   "devDependencies": {
     "@types/jest": "^24.0.18",
-    "@types/node": "^12.12.41",
     "jest": "^24.1.0",
     "prettier": "^1.12.1",
     "ts-jest": "^24.1.0",
