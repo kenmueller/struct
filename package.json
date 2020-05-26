@@ -56,6 +56,5 @@
   "prettier": {
     "semi": false,
     "singleQuote": true
-  },
-  "main": "src/struct/index.ts"
+  }
 }

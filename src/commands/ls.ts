@@ -1,5 +1,5 @@
-import axios from 'axios'
 import { GluegunToolbox } from 'gluegun'
+import { listStructures } from '../struct'
 
 module.exports = {
   async run(toolbox: GluegunToolbox) {
@@ -9,20 +9,7 @@ module.exports = {
 
     const spinner = toolbox.print.spin('Loading...')
 
-    const frameworks = (
-      await axios(
-        'https://api.github.com/repos/Standard-Structure/Standard-Structure/contents/frameworks'
-      )
-    ).data
-      .filter(i => i.type === 'dir')
-      .map(i => i.name)
-    const languages = (
-      await axios(
-        'https://api.github.com/repos/Standard-Structure/Standard-Structure/contents/languages'
-      )
-    ).data
-      .filter(i => i.type === 'dir')
-      .map(i => i.name)
+    const { frameworks, languages } = await listStructures()
 
     spinner.stop()
 

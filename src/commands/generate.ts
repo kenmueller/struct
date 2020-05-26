@@ -1,6 +1,6 @@
 import { GluegunToolbox } from 'gluegun'
-import axios from 'axios'
 import { extract } from 'tar'
+import { getAllStructures } from '../struct'
 
 module.exports = {
   name: 'generate',
@@ -33,14 +33,7 @@ module.exports = {
 
     const spinner = spin('Downloading repo...')
 
-    const stream = (
-      await axios.get(
-        'https://api.github.com/repos/Standard-Structure/Standard-Structure/tarball',
-        {
-          responseType: 'stream'
-        }
-      )
-    ).data
+    const stream = await getAllStructures()
 
     spinner.succeed('Downloaded!')
     const unpackSpinner = spin('Unpacking...')
