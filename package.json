@@ -7,6 +7,7 @@
   "bin": {
     "struct": "bin/cli"
   },
+  "main": "build/struct/index.js",
   "scripts": {
     "format": "prettier --write **/*.{js,ts,tsx,json}",
     "lint": "tslint -p .",
