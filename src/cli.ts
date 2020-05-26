@@ -6,7 +6,7 @@ const { build } = require('gluegun')
 async function run(argv) {
   // create a CLI runtime
   const cli = build()
-    .brand('cli')
+    .brand('struct')
     .src(__dirname)
     .plugins('./node_modules', { matching: 'cli-*', hidden: true })
     .help() // provides default for help, h, --help, -h
