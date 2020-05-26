@@ -11,10 +11,10 @@ module.exports = {
 
     const frameworks = (await axios(
       "https://api.github.com/repos/Standard-Structure/Standard-Structure/contents/frameworks",
-    )).data.filter((i) => i.type == "dir").map((i) => i.name);
+    )).data.filter((i) => i.type === "dir").map((i) => i.name);
     const languages = (await axios(
       "https://api.github.com/repos/Standard-Structure/Standard-Structure/contents/languages",
-    )).data.filter((i) => i.type == "dir").map((i) => i.name);
+    )).data.filter((i) => i.type === "dir").map((i) => i.name);
 
     spinner.stop();
 
