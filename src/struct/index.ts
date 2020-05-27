@@ -54,18 +54,14 @@ export async function getAllStructures(
 }
 
 export async function copyFilesRecursively(src: string, dest: string) {
-  await fs.readdir(src, { withFileTypes: true }, (err, dirents) => {
-    if (err) {
-      throw err
-    }
+  const dirents = fs.readdirSync(src, { withFileTypes: true })
 
-    for (const dirent of dirents) {
-      if (dirent.isFile) {
-        fs.mkdirSync(`${dest}`, { recursive: true })
-        fs.copyFileSync(`${src}/${dirent.name}`, `${dest}/${dirent.name}`)
-      } else if (dirent.isDirectory) {
-        copyFilesRecursively(`${src}/${dirent.name}`, `${dest}/${dirent.name}`)
-      }
+  for (const dirent of dirents) {
+    if (dirent.isFile) {
+      fs.mkdirSync(`${dest}`, { recursive: true })
+      fs.copyFileSync(`${src}/${dirent.name}`, `${dest}/${dirent.name}`)
+    } else if (dirent.isDirectory) {
+      copyFilesRecursively(`${src}/${dirent.name}`, `${dest}/${dirent.name}`)
     }
-  })
+  }
 }
