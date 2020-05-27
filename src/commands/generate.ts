@@ -77,7 +77,7 @@ module.exports = {
               )
               .on('end', () => {
                 unpackSpinner.succeed(
-                  `Unpacked structure to cache at ${structureCachePath}/${structureName}`
+                  `Unpacked structure to cache at ${structureCachePath}`
                 )
                 const cacheGenerateSpinner = spin(
                   'Generating structure from cached folder...'
