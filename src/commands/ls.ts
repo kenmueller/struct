@@ -28,11 +28,15 @@ module.exports = {
 
       try {
         framework = frameworks[i]
-      } catch (e) {}
+      } catch (e) {
+        framework = null
+      }
 
       try {
         language = languages[i]
-      } catch (e) {}
+      } catch (e) {
+        language = null
+      }
 
       tableData.push([framework, language])
     }
