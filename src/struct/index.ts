@@ -57,10 +57,10 @@ export function copyFilesRecursively(src: string, dest: string) {
   const dirents = fs.readdirSync(src, { withFileTypes: true })
 
   for (const dirent of dirents) {
-    if (dirent.isFile) {
+    if (dirent.isFile()) {
       fs.mkdirSync(`${dest}`, { recursive: true })
       fs.copyFileSync(`${src}/${dirent.name}`, `${dest}/${dirent.name}`)
-    } else if (dirent.isDirectory) {
+    } else if (dirent.isDirectory()) {
       copyFilesRecursively(`${src}/${dirent.name}`, `${dest}/${dirent.name}`)
     }
   }
