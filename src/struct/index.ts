@@ -19,24 +19,22 @@ export function isNetworkConnected(): Promise<boolean> {
   })
 }
 
-export async function listStructures(): Promise<{
+export async function listStructures(
+  registry: string = 'Standard-Structure/Standard-Structure'
+): Promise<{
   frameworks: string[]
   languages: string[]
 }> {
-  const frameworks = (
-    await axios(
-      'https://api.github.com/repos/Standard-Structure/Standard-Structure/contents/frameworks'
-    )
-  ).data
-    .filter(i => i.type === 'dir')
-    .map(i => i.name)
-  const languages = (
-    await axios(
-      'https://api.github.com/repos/Standard-Structure/Standard-Structure/contents/languages'
-    )
-  ).data
-    .filter(i => i.type === 'dir')
-    .map(i => i.name)
+  const [frameworks, languages] = (
+    await Promise.all([
+      axios(`https://api.github.com/repos/${registry}/contents/frameworks`),
+      axios(`https://api.github.com/repos/${registry}/contents/languages`)
+    ])
+  )
+    .map(resp => resp.data)
+    .map(i => {
+      return i.filter(x => x.type === 'dir').map(x => x.name)
+    })
 
   return {
     frameworks,

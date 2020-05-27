@@ -4,7 +4,7 @@ import { listStructures } from '../struct'
 module.exports = {
   async run(toolbox: GluegunToolbox) {
     const {
-      print: { info, colors }
+      print: { table, colors }
     } = toolbox
 
     const spinner = toolbox.print.spin('Loading...')
@@ -13,10 +13,33 @@ module.exports = {
 
     spinner.stop()
 
-    info(colors.muted('Frameworks'))
-    info(frameworks.join('\n') + '\n')
+    let tableData = []
 
-    info(colors.muted('Languages'))
-    info(languages.join('\n'))
+    for (
+      let i = 0;
+      i <
+      (frameworks.length > languages.length
+        ? frameworks.length
+        : languages.length);
+      i++
+    ) {
+      let framework: string
+      let language: string
+
+      try {
+        framework = frameworks[i]
+      } catch (e) {}
+
+      try {
+        language = languages[i]
+      } catch (e) {}
+
+      tableData.push([framework, language])
+    }
+
+    table(
+      [[colors.muted('Frameworks'), colors.muted('Languages')], ...tableData],
+      { format: 'default' }
+    )
   }
 }
