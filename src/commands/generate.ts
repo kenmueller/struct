@@ -13,7 +13,7 @@ module.exports = {
   alias: ['g'],
   run: async (toolbox: GluegunToolbox) => {
     const {
-      print: { spin },
+      print: { spin, error },
       prompt
     } = toolbox
 
@@ -88,7 +88,7 @@ module.exports = {
                 )
               })
           } else {
-            console.error(
+            error(
               `You don't have the structure for ${resp.name} cached locally. Please try again once you are connected to the Internet.`
             )
           }
