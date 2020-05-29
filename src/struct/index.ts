@@ -1,7 +1,13 @@
 import { connect } from 'http2'
 import axios from 'axios'
 import { Readable } from 'stream'
+
 import * as fs from 'fs'
+import * as os from 'os'
+import * as path from 'path'
+import { promisify } from 'util'
+
+export const cacheHome = path.join(os.homedir(), '.struct', 'caches')
 
 /**
  * Returns whether or not the host computer has a network connection.
@@ -58,10 +64,27 @@ export function copyFilesRecursively(src: string, dest: string) {
 
   for (const dirent of dirents) {
     if (dirent.isFile()) {
-      fs.mkdirSync(`${dest}`, { recursive: true })
-      fs.copyFileSync(`${src}/${dirent.name}`, `${dest}/${dirent.name}`)
+      fs.mkdirSync(dest, { recursive: true })
+      fs.copyFileSync(path.join(src, dirent.name), path.join(dest, dirent.name))
     } else if (dirent.isDirectory()) {
-      copyFilesRecursively(`${src}/${dirent.name}`, `${dest}/${dirent.name}`)
+      copyFilesRecursively(
+        path.join(src, dirent.name),
+        path.join(dest, dirent.name)
+      )
     }
   }
+}
+
+export async function getCachedStructures(): Promise<string[][]> {
+  const readdir = promisify(fs.readdir)
+  return [
+    ...(await readdir(path.join(cacheHome, 'frameworks'))).map(i => [
+      'frameworks',
+      i
+    ]),
+    ...(await readdir(path.join(cacheHome, 'languages'))).map(i => [
+      'languages',
+      i
+    ])
+  ]
 }

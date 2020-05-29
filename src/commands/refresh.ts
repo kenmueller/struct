@@ -1,5 +1,5 @@
 import { GluegunToolbox } from 'gluegun'
-import { isNetworkConnected } from '../struct'
+import { isNetworkConnected, getCachedStructures } from '../struct'
 
 module.exports = {
   name: 'refresh',
@@ -15,8 +15,10 @@ module.exports = {
 
       if (await isNetworkConnected()) {
         networkSpinner.succeed('Connected')
+
+        info(await getCachedStructures())
       } else {
-        networkSpinner.fail('Not connected')
+        networkSpinner.fail("You're not connected to the Internet. :(")
       }
     } else {
       info('Aborting.')

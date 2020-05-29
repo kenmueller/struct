@@ -3,10 +3,11 @@ import { extract } from 'tar'
 import {
   getAllStructures,
   copyFilesRecursively,
-  isNetworkConnected
+  isNetworkConnected,
+  cacheHome
 } from '../struct'
-import * as os from 'os'
 import * as fs from 'fs'
+import * as path from 'path'
 
 module.exports = {
   name: 'generate',
@@ -39,12 +40,10 @@ module.exports = {
 
     const structureName =
       resp.type === 'Framework'
-        ? `frameworks/${resp.name}/basic`
-        : `languages/${resp.name}/basic`
+        ? path.join('frameworks', resp.name, 'basic')
+        : path.join('languages', resp.name, 'basic')
 
-    const cacheHome = `${os.homedir}/.struct/caches`
-
-    const structureCachePath = `${cacheHome}/${structureName}`
+    const structureCachePath = path.join(cacheHome, structureName)
 
     fs.access(structureCachePath, fs.constants.F_OK, async err => {
       if (err) {
