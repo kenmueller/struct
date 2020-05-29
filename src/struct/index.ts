@@ -83,9 +83,7 @@ export async function getCachedStructures(): Promise<{
     frameworks: [
       ...(await readdirIfExists(path.join(cacheHome, 'frameworks')))
     ],
-    languages: [
-      ...(await readdirIfExists(path.join(cacheHome, 'languages')))
-    ]
+    languages: [...(await readdirIfExists(path.join(cacheHome, 'languages')))]
   }
 }
 
