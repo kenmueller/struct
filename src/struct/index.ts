@@ -5,6 +5,7 @@ import { Readable } from 'stream'
 import * as fs from 'fs'
 import * as os from 'os'
 import * as path from 'path'
+import { promisify } from 'util'
 
 export const cacheHome = path.join(os.homedir(), '.struct', 'caches')
 
@@ -88,8 +89,10 @@ export async function getCachedStructures(): Promise<{frameworks: string[], lang
 export async function readdirIfExists(
   directoryPath: string
 ): Promise<string[]> {
+  const readdir = promisify(fs.readdir)
+
   try {
-    return [...fs.readdirSync(directoryPath)]
+    return await readdir(directoryPath)
   } catch (error) {
     if (error.code === 'ENOENT') {
       return []
