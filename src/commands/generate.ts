@@ -17,7 +17,7 @@ module.exports = {
       prompt
     } = toolbox
 
-    let resp = await prompt.ask([
+    const resp = await prompt.ask([
       {
         type: 'select',
         name: 'type',
@@ -27,7 +27,7 @@ module.exports = {
       {
         type: 'input',
         name: 'name',
-        message: `Which language/framework would you like to generate?`
+        message: 'Which language/framework would you like to generate?'
       },
       {
         type: 'input',

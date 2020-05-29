@@ -13,7 +13,7 @@ module.exports = {
 
     spinner.stop()
 
-    let tableData = []
+    const tableData = []
 
     for (
       let i = 0;
