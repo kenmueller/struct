@@ -5,7 +5,6 @@ import { Readable } from 'stream'
 import * as fs from 'fs'
 import * as os from 'os'
 import * as path from 'path'
-import { promisify } from 'util'
 
 export const cacheHome = path.join(os.homedir(), '.struct', 'caches')
 
@@ -75,16 +74,27 @@ export function copyFilesRecursively(src: string, dest: string) {
   }
 }
 
-export async function getCachedStructures(): Promise<string[][]> {
-  const readdir = promisify(fs.readdir)
-  return [
-    ...(await readdir(path.join(cacheHome, 'frameworks'))).map(i => [
-      'frameworks',
-      i
-    ]),
-    ...(await readdir(path.join(cacheHome, 'languages'))).map(i => [
-      'languages',
-      i
-    ])
-  ]
+export async function getCachedStructures(): Promise<{frameworks: string[], languages: string[]}> {
+  return {
+    frameworks: [
+      ...(await readdirIfExists(path.join(cacheHome, 'frameworks'))).map(i => i)
+    ],
+    languages: [
+      ...(await readdirIfExists(path.join(cacheHome, 'languages'))).map(i => i)
+    ]
+  }
+}
+
+export async function readdirIfExists(
+  directoryPath: string
+): Promise<string[]> {
+  try {
+    return [...fs.readdirSync(directoryPath)]
+  } catch (error) {
+    if (error.code === 'ENOENT') {
+      return []
+    } else {
+      throw error
+    }
+  }
 }
