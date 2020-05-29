@@ -19,13 +19,13 @@ module.exports = {
         const refreshSpinner = spin('Refreshing cached structures...')
 
         await getCachedStructures().then(currentCache => {
-            // TODO - Actually refresh the structures
-            refreshSpinner.succeed('Cached structures refreshed:')
+          // TODO - Actually refresh the structures
+          refreshSpinner.succeed('Cached structures refreshed:')
           info(
             `\nFrameworks:\n${currentCache.frameworks.map((value, _, __) => {
-                return `\t${value}\n`;
+              return `\t${value}\n`
             })}\nLanguages:\n${currentCache.languages.map((value, _, __) => {
-                return `\t${value}\n`;
+              return `\t${value}\n`
             })}`
           )
         })

@@ -74,7 +74,10 @@ export function copyFilesRecursively(src: string, dest: string) {
   }
 }
 
-export async function getCachedStructures(): Promise<{frameworks: string[], languages: string[]}> {
+export async function getCachedStructures(): Promise<{
+  frameworks: string[]
+  languages: string[]
+}> {
   return {
     frameworks: [
       ...(await readdirIfExists(path.join(cacheHome, 'frameworks'))).map(i => i)
