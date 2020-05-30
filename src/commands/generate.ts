@@ -70,6 +70,7 @@ module.exports = {
                 extract({
                   C: structureCachePath,
                   strip: 4,
+                  // eslint-disable-next-line @typescript-eslint/no-unused-vars
                   filter: (path, entry) => {
                     return path.includes(structureName)
                   }
