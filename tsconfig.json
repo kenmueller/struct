@@ -3,12 +3,7 @@
     "allowSyntheticDefaultImports": false,
     "experimentalDecorators": true,
     "lib": [
-      "es2015",
-      "scripthost",
-      "es2015.promise",
-      "es2015.generator",
-      "es2015.iterable",
-      "dom"
+      "ESNext",
     ],
     "module": "commonjs",
     "moduleResolution": "node",
@@ -16,12 +11,13 @@
     "noImplicitThis": true,
     "noUnusedLocals": true,
     "sourceMap": false,
-    "inlineSourceMap": true,
+    "inlineSourceMap": false,
     "outDir": "build",
     "strict": false,
     "target": "ES2018",
     "declaration": true,
-    "declarationDir": "build/types"
+    "declarationDir": "build/types",
+    "useDefineForClassFields": true
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]
