@@ -11,7 +11,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
-      - run: |
-          yarn install
-          yarn run build --if-present
-          yarn test
+      - run: yarn install
+      - run: yarn run build --if-present
+      - run: yarn test
