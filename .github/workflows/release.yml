@@ -13,8 +13,8 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v2-beta
       - run: |
-          npm install
-          npm run build
+          yarn install
+          yarn run build
           rm -rf src/
       - run: npm publish
         env:
