@@ -21,6 +21,9 @@
     "snapupdate": "jest --updateSnapshot",
     "coverage": "jest --coverage"
   },
+  "engines": {
+    "node": ">=10.18.1"
+  },
   "files": [
     "tsconfig.json",
     "tslint.json",
