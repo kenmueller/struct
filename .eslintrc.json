@@ -1,33 +1,25 @@
 {
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-        "ecmaVersion": 11,
-        "sourceType": "module",
-        "project": [
-            "./tsconfig.json"
-        ]
-    },
-    "plugins": [
-        "@typescript-eslint"
-    ],
-    "extends": [
-        "standard",
-        "plugin:prettier/recommended",
-        "prettier/standard"
-    ],
-    "env": {
-        "es6": true,
-        "node": true
-    },
-    "rules": {
-        "no-unused-vars": "warn"
-    },
-    "overrides": [
-        {
-            "files": "**/*.{test,spec}.{js,ts}",
-            "env": {
-                "jest": true
-            }
-        }
-    ]
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 11,
+    "sourceType": "module",
+    "project": ["./tsconfig.json"]
+  },
+  "plugins": ["@typescript-eslint"],
+  "extends": ["standard", "plugin:prettier/recommended", "prettier/standard"],
+  "env": {
+    "es6": true,
+    "node": true
+  },
+  "rules": {
+    "no-unused-vars": "warn"
+  },
+  "overrides": [
+    {
+      "files": "**/*.{test,spec}.{js,ts}",
+      "env": {
+        "jest": true
+      }
+    }
+  ]
 }
