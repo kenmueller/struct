@@ -5,13 +5,17 @@ on:
   - pull_request
 
 jobs:
-  build:
+  format:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-      - run: |
-          yarn install
-          yarn run format
-          git diff --exit-code
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+      - name: Install dependencies
+        run: yarn install
+      - name: Format Project
+        run: yarn run format
+      - name: If Changes, Fail
+        run: git diff --exit-code
