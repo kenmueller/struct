@@ -17,7 +17,7 @@ module.exports = {
       prompt
     } = toolbox
 
-    let resp = await prompt.ask([
+    const resp = await prompt.ask([
       {
         type: 'select',
         name: 'type',
@@ -27,7 +27,7 @@ module.exports = {
       {
         type: 'input',
         name: 'name',
-        message: `Which language/framework would you like to generate?`
+        message: 'Which language/framework would you like to generate?'
       },
       {
         type: 'input',
@@ -70,6 +70,7 @@ module.exports = {
                 extract({
                   C: structureCachePath,
                   strip: 4,
+                  // eslint-disable-next-line @typescript-eslint/no-unused-vars
                   filter: (path, entry) => {
                     return path.includes(structureName)
                   }

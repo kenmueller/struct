@@ -21,7 +21,7 @@ export async function isNetworkConnected(): Promise<boolean> {
 }
 
 export async function listStructures(
-  registry: string = 'Standard-Structure/Standard-Structure'
+  registry = 'Standard-Structure/Standard-Structure'
 ): Promise<{
   frameworks: string[]
   languages: string[]
@@ -44,7 +44,7 @@ export async function listStructures(
 }
 
 export async function getAllStructures(
-  registry: string = 'Standard-Structure/Standard-Structure'
+  registry = 'Standard-Structure/Standard-Structure'
 ): Promise<Readable> {
   const stream = await axios.get(
     `https://api.github.com/repos/${registry}/tarball`,
@@ -53,7 +53,7 @@ export async function getAllStructures(
   return stream.data
 }
 
-export function copyFilesRecursively(src: string, dest: string) {
+export function copyFilesRecursively(src: string, dest: string): void {
   const dirents = fs.readdirSync(src, { withFileTypes: true })
 
   for (const dirent of dirents) {
