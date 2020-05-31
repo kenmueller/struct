@@ -1,0 +1,21 @@
+name: On Release
+on:
+  release:
+    types:
+      - published
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Node
+        uses: actions/setup-node@v2-beta
+      - run: |
+          yarn install
+          yarn run build
+          rm -rf src/
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

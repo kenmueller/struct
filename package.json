@@ -14,13 +14,15 @@
     "lint:fix": "eslint --fix \"**/*.{js,ts}\"",
     "clean-build": "rm -rf ./build",
     "compile": "tsc -p .",
-    "copy-templates": "if [ -e ./src/templates ]; then cp -a ./src/templates ./build/; fi",
-    "build": "yarn format && yarn lint && yarn clean-build && yarn compile && yarn copy-templates",
+    "build": "yarn run format && yarn run lint && yarn run clean-build && yarn run compile",
     "prepublishOnly": "yarn build",
     "test": "jest",
     "watch": "jest --watch",
     "snapupdate": "jest --updateSnapshot",
     "coverage": "jest --coverage"
+  },
+  "engines": {
+    "node": ">=10.18.1"
   },
   "files": [
     "tsconfig.json",
