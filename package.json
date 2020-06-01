@@ -5,7 +5,7 @@
   "private": true,
   "types": "build/types/types.d.ts",
   "bin": {
-    "struct": "bin/cli"
+    "struct": "bin/cli.js"
   },
   "main": "build/struct/index.js",
   "scripts": {
