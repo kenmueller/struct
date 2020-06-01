@@ -9,8 +9,8 @@
   },
   "main": "build/struct/index.js",
   "scripts": {
-    "format": "prettier --write \"**/*.{js,ts,tsx,json}\"",
-    "lint": "eslint \"**/*.{js,ts,jsx,tsx}\"",
+    "format": "prettier --write \"**/*.{js,ts,json,md,yml,yaml}\"",
+    "lint": "eslint \"**/*.{js,ts}\"",
     "lint:fix": "eslint --fix \"**/*.{js,ts}\"",
     "clean-build": "rimraf build",
     "compile": "tsc -p .",
