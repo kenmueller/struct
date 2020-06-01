@@ -10,6 +10,7 @@
   "main": "build/struct/index.js",
   "scripts": {
     "format": "prettier --write **/*.{js,ts,tsx,json}",
+    "checkformat": "prettier --check **/*.{js,ts,tsx,json}",
     "lint": "eslint \"**/*.{js,ts,jsx,tsx}\"",
     "lint:fix": "eslint --fix \"**/*.{js,ts}\"",
     "clean-build": "rm -rf ./build",

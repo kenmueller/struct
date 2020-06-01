@@ -13,5 +13,4 @@ jobs:
       - uses: actions/setup-node@v1
       - run: |
           yarn install
-          yarn run format
-          git diff --exit-code
+          yarn run checkformat
