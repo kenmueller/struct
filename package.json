@@ -5,17 +5,17 @@
   "private": true,
   "types": "build/types/types.d.ts",
   "bin": {
-    "struct": "bin/cli"
+    "struct": "bin/cli.js"
   },
   "main": "build/struct/index.js",
   "scripts": {
-    "format": "prettier --write **/*.{js,ts,tsx,json}",
-    "checkformat": "prettier --check **/*.{js,ts,tsx,json}",
-    "lint": "eslint \"**/*.{js,ts,jsx,tsx}\"",
+    "format": "prettier --write \"**/*.{js,ts,json,md,yml,yaml}\"",
+    "checkformat": "prettier --check **/*.{js,ts,json,md,yml,yaml}",
+    "lint": "eslint \"**/*.{js,ts}\"",
     "lint:fix": "eslint --fix \"**/*.{js,ts}\"",
-    "clean-build": "rm -rf ./build",
+    "clean-build": "rimraf build",
     "compile": "tsc -p .",
-    "build": "yarn run format && yarn run lint && yarn run clean-build && yarn run compile",
+    "build": "run-s format lint clean-build compile",
     "prepublishOnly": "yarn build",
     "test": "jest",
     "watch": "jest --watch",
@@ -55,7 +55,9 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
     "jest": "^24.1.0",
+    "npm-run-all": "^4.1.5",
     "prettier": "^1.12.1",
+    "rimraf": "^3.0.2",
     "ts-jest": "^24.1.0",
     "ts-node": "^8.4.1",
     "typescript": "^3.6.3"
