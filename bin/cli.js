@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+/* eslint-disable @typescript-eslint/no-var-requires */
 
 // check if we're running in dev mode
 var devMode = require('fs').existsSync(`${__dirname}/../src`)
