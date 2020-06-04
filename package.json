@@ -69,5 +69,10 @@
   "prettier": {
     "semi": false,
     "singleQuote": true
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn test && yarn format && yarn lint"
+    }
   }
 }
