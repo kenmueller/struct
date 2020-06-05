@@ -15,7 +15,7 @@
     "lint:fix": "eslint --fix \"**/*.{js,ts}\"",
     "clean-build": "rimraf build",
     "compile": "tsc -p .",
-    "build": "run-s format lint clean-build compile",
+    "build": "yarn format && yarn lint && yarn clean-build && yarn compile",
     "prepublishOnly": "yarn build",
     "test": "jest",
     "watch": "jest --watch",
